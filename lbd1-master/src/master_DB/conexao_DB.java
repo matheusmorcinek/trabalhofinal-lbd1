@@ -21,18 +21,18 @@ public class conexao_DB {
     public static Connection conexao;
     
     public conexao_DB(){
-    	conectarBanco();
+    	//conectarBanco();
     }
     
 	public void conectarBanco() {
     
 		
 		Properties connectionProps = new Properties();
-		connectionProps.put("user", "system");
-		connectionProps.put("password", "507507");
+		connectionProps.put("user", "BG111201");
+		connectionProps.put("password", "BG111201");
 		try{
-                  conexao = DriverManager.getConnection("jdbc:oracle:thin:system@//localhost:1521/xe",connectionProps);  
-                  //conexao = DriverManager.getConnection("jdbc:oracle:thin:@//camburi.pucrs.br:1521/facin11g",connectionProps);  
+                  //conexao = DriverManager.getConnection("jdbc:oracle:thin:system@//localhost:1521/xe",connectionProps);  
+                  conexao = DriverManager.getConnection("jdbc:oracle:thin:@//camburi.pucrs.br:1521/facin11g",connectionProps);  
                   System.out.println("Conexão bem sucedida!");
                   
                 } catch(SQLException e){
