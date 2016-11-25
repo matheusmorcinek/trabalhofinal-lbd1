@@ -8,6 +8,20 @@ public class Cliente {
 	private String endereco;
 	private double limiteConta;
 	private String status;
+        
+        public Cliente(int codigo,
+                       String nome,
+                       String status,
+                       int telefone,
+                       String endereco,
+                       Double limite){
+            this.codCliente = codigo;
+            this.nome = nome;
+            this.status = status;
+            this.telefone = telefone;
+            this.endereco = endereco;
+            this.limiteConta = limite;            
+        }
 	
 	public String getStatus() {
 		return status;
@@ -45,6 +59,11 @@ public class Cliente {
 	public void setLimiteConta(double limiteConta) {
 		this.limiteConta = limiteConta;
 	}
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "codCliente=" + codCliente + ", nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco + ", limiteConta=" + limiteConta + ", status=" + status + '}';
+    }
 	
 	
 }

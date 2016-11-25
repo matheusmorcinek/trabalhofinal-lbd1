@@ -27,15 +27,18 @@ public class App {
         
          masterController master = new masterController();
          
-         
          //1. Listagem de todos os produtos, em ordem alfabética.
-         ArrayList<Produto> produtos = master.RetornaProdutos();
-         for(Produto produto : produtos){
-             System.out.println(produto.toString());
-         }
+        master.RetornaProdutos();
          
-         
-         
+        System.out.println("RetornaProdutoPorNome ###################################################################### "); 
+        String nome = "Alvejante";
+        master.RetornaProdutoPorNome(nome);
+ 
+        System.out.println("RetornaClientePorNome ###################################################################### "); 
+        String nome2 = "CLIENTE 1";
+        master.RetornaClientePorNome(nome2);
+
+        
     }
          
          
