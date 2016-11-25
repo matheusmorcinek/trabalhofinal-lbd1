@@ -19,24 +19,25 @@ import java.util.logging.Logger;
 public class conexao_DB {
     
     public static Connection conexao;
-
+    
     public conexao_DB(){
     	conectarBanco();
     }
     
 	public void conectarBanco() {
-			
+    
 		
 		Properties connectionProps = new Properties();
-		connectionProps.put("user", "BG111201");
-		connectionProps.put("password", "BG111201");
+		connectionProps.put("user", "system");
+		connectionProps.put("password", "507507");
 		try{
-                  conexao = DriverManager.getConnection("jdbc:oracle:thin:@//camburi.pucrs.br:1521/facin11g",connectionProps);  
+                  conexao = DriverManager.getConnection("jdbc:oracle:thin:system@//localhost:1521/xe",connectionProps);  
+                  //conexao = DriverManager.getConnection("jdbc:oracle:thin:@//camburi.pucrs.br:1521/facin11g",connectionProps);  
                   System.out.println("Conexão bem sucedida!");
                   
                 } catch(SQLException e){
                     System.out.println("Falha na conexo!");                    
-                }
+}
 		}
         
         public static Connection getConexao(){
@@ -46,6 +47,7 @@ public class conexao_DB {
         public void fechaConexao(){
             try {
                 this.conexao.close();
+                System.out.println("Conexão finalizada!");
             } catch (SQLException ex) {
                 Logger.getLogger(conexao_DB.class.getName()).log(Level.SEVERE, null, ex);
             }
