@@ -212,16 +212,104 @@ public class masterController {
 		db.fechaConexao();
         
     }
-    
-    
-    
+        
     //6. Listar os clientes, o número de pedidos e o valor total dos pedidos para o cliente.
       //Ordenar pelo valor total dos pedidos, do maior para o menor.
     public void RetornaListaDeClientesEnumeroPedidosComTotal(){
         /*(select cl.NOME, count(ped.CODIGOPEDIDO) as TotalPedidos, sum(valortotal) as ValorTotal
 from clientes cl inner join pedidos ped on cl.CODIGOCLIENTE = ped.CODIGOCLIENTE
 group by cl.NOME) ORDER BY NOME ASC;*/
+        
+                conexao_DB db = new conexao_DB();
+		
+		db.conectarBanco();
+		
+                String sql = "(select cl.NOME, count(ped.CODIGOPEDIDO) as TotalPedidos, sum(valortotal) as ValorTotal\n" +
+                                "from clientes cl inner join pedidos ped on cl.CODIGOCLIENTE = ped.CODIGOCLIENTE\n" +
+                                    "group by cl.NOME) ORDER BY NOME ASC";
+		
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+                        ResultSet resultado = stmt.executeQuery();
+			while(resultado.next()){
+                            System.out.println("Nome: "+resultado.getString("NOME")+
+                                                "Total Pedidos: "+resultado.getInt("TOTALPEDIDOS")+
+                                                  "Valor Total: "+resultado.getInt("VALORTOTAL")
+                                                );
+                                    
+                      }			
+			resultado.close();
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(conexao_DB.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		db.fechaConexao();
+        
     }
+    
+    
+    //7
+    public void retornaPrecoDeProdutoComPedido(){
+         conexao_DB db = new conexao_DB();
+		
+		db.conectarBanco();
+		
+                String sql = "select cl.NOME, ped.CODIGOPRODUTO, prod.NOME AS NOMEPRODUTO, prod.PRECO\n" +
+                                "from clientes cl \n" +
+                                "inner join pedidos ped on cl.CODIGOCLIENTE = ped.CODIGOCLIENTE\n" +
+                                "inner join produtos prod on ped.CODIGOPRODUTO = prod.CODIGOPRODUTO\n" +
+                                "where prod.preco = (select max(prod.preco) from produtos prod \n" +
+                                "                    inner join PEDIDOS ped on (ped.CODIGOPRODUTO = prod.CODIGOPRODUTO)\n" +
+                                "                    )";
+		
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+                        ResultSet resultado = stmt.executeQuery();
+			while(resultado.next()){
+                                          System.out.println("Nome: "+resultado.getString("NOME")+
+                                                "Total Pedidos: "+resultado.getInt("CODIGOPRODUTO")+
+                                                    "Nome Produto: "+resultado.getString("NOMEPRODUTO")+
+                                                  "Valor Total: "+resultado.getInt("PRECO")
+                                                );
+                                    
+                      }			
+			resultado.close();
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(conexao_DB.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		db.fechaConexao();
+    }
+
+    
+    public int retornaTotalDePedidos(){
+                conexao_DB db = new conexao_DB();
+		
+		db.conectarBanco();
+		
+                String sql = "select count(*) as RESULTADO from pedidos";
+		int resultadoTotal = 0;
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+                        ResultSet resultado = stmt.executeQuery();
+			while(resultado.next()){
+                                 resultadoTotal = resultado.getInt("RESULTADO");
+                                    
+                      }			
+			resultado.close();
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(conexao_DB.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		db.fechaConexao();
+                
+                return resultadoTotal;
+    }
+    
+    
     
     public void padrao(){
                 conexao_DB db = new conexao_DB();

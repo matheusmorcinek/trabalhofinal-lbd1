@@ -27,7 +27,7 @@ public class App {
     public static void main(String[] args) throws Exception{
         
          masterController master = new masterController();
-         
+        /* 
          //1. Listagem de todos os produtos, em ordem alfabética.
         master.RetornaProdutos();
          
@@ -43,6 +43,14 @@ public class App {
        // Pedido pedido = new Pedido(7, 225, 3500, 3,7);
      //   master.FazerNovoPedido();
         master.RetornaPedidosPorProduto("Alvejante");
+        */
+        
+       // master.RetornaListaDeClientesEnumeroPedidosComTotal();
+       
+       
+       master.retornaPrecoDeProdutoComPedido();
+       
+        System.out.println(master.retornaTotalDePedidos());
     }
          
          
