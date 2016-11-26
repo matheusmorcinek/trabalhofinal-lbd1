@@ -15,6 +15,9 @@ public  class Menu {
     
     public static void main(String[] args) {
         boolean roda = true;
+        
+         masterController master = new masterController();
+       
      
         while(roda){
             Scanner get = new Scanner(System.in);
@@ -30,23 +33,22 @@ public  class Menu {
             int opcao = get.nextInt();
             switch(opcao){
                 case 1:
-                    //comando
+                    master.RetornaProdutos();
                     break;
                 case 2:
                     System.out.println("Entre com o nome do produto: ");
                     String produto = get.next();
+                    master.RetornaProdutoPorNome(produto);
                     break;
                 case 3:
                     System.out.println("Entre com o nome do cliente: ");
                     String cliente = get.next();
-                    
+                    master.RetornaClientePorNome(cliente);
                     break;
                 case 4:
-                    System.out.println("Digite categoria: '1' para 'Limpeza', '2' para 'Algo', '3' para 'Descartáveis', e '4' para 'Lavanderia': ");
+                    System.out.println("Digite codigo do produto: ");
                     int cod_cat = get.nextInt();
-                    if(cod_cat < 1 || cod_cat > 4){
-                        cod_cat = get.nextInt();
-                    }
+                    
                     System.out.println("Entre com o código do cliente: ");
                     int cod_cli = get.nextInt();
                     //pegar total clientes
@@ -64,15 +66,24 @@ public  class Menu {
                     if(vTotal < 0){
                         qtde = get.nextInt();
                     }
+                    System.out.println("Entre com o codigo do produto: ");
+                    String cproduto = get.nextLine();
+                    
+                    String totalPedidos = Integer.toString(master.retornaTotalDePedidos());
+                    master.FazerNovoPedido(totalPedidos, cod_cat, cod_cli, qtde, vTotal);
+                    
                     break;
                 case 5:
-                    //comand
+                    System.out.println("digite nome do produto");
+                    String nomedoproduto = get.nextLine();
+                    master.RetornaPedidosPorProduto(nomedoproduto);
+                    
                     break;
                 case 6:
-                    //comando 
+                    master.RetornaListaDeClientesEnumeroPedidosComTotal();
                     break;
                 case 7:
-                    //comando
+                  master.retornaPrecoDeProdutoComPedido();
                     
                     break;
                 case 8:
