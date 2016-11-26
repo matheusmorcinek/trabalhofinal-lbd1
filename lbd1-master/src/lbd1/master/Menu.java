@@ -11,17 +11,11 @@ import java.util.Scanner;
  *
  * @author marthi
  */
-public final class Menu {
+public  class Menu {
     
-    boolean roda;
-    
-    public Menu(){
-        inicia();
-        this.roda = true;
-        
-    }
-    
-    public void inicia(){
+    public static void main(String[] args) {
+        boolean roda = true;
+     
         while(roda){
             Scanner get = new Scanner(System.in);
             System.out.println("Tecle '1' para Listagem de produtos em ordem alfabética: ");
@@ -32,20 +26,44 @@ public final class Menu {
             System.out.println("Tecle '6' para Listar os clientes, o número de pedidos e o valor total dos pedidos para o cliente: ");
             System.out.println("Tecle '7' para Visualizar relatório de pedidos por data: ");
             System.out.println("Tecle '8' para Listar o produto mais caro comprado por cada cliente: ");
-            System.out.println("Tecle '0' Sair: ");
+            System.out.println("Tecle '9' Sair: ");
             int opcao = get.nextInt();
             switch(opcao){
                 case 1:
                     //comando
                     break;
                 case 2:
-                    //comando
+                    System.out.println("Entre com o nome do produto: ");
+                    String produto = get.next();
                     break;
                 case 3:
-                    //comando
+                    System.out.println("Entre com o nome do cliente: ");
+                    String cliente = get.next();
+                    
                     break;
                 case 4:
-                    //comando
+                    System.out.println("Digite categoria: '1' para 'Limpeza', '2' para 'Algo', '3' para 'Descartáveis', e '4' para 'Lavanderia': ");
+                    int cod_cat = get.nextInt();
+                    if(cod_cat < 1 || cod_cat > 4){
+                        cod_cat = get.nextInt();
+                    }
+                    System.out.println("Entre com o código do cliente: ");
+                    int cod_cli = get.nextInt();
+                    //pegar total clientes
+                    int total_clientes = 0;
+                    if(cod_cli < 0 || cod_cli > total_clientes){
+                        cod_cli = get.nextInt();
+                    }
+                    System.out.println("Entre a quantidade de produtos: ");
+                    int qtde = get.nextInt();
+                    if(qtde < 0){
+                        qtde = get.nextInt();
+                    }
+                    System.out.println("Entre com o valor total: ");
+                    double vTotal = get.nextDouble();
+                    if(vTotal < 0){
+                        qtde = get.nextInt();
+                    }
                     break;
                 case 5:
                     //comand
@@ -55,20 +73,24 @@ public final class Menu {
                     break;
                 case 7:
                     //comando
+                    
                     break;
                 case 8:
-                    this.roda = false;
+                    //comando
+                    break;
+                case 9:
+                   roda = false;
                     break;
                 default:
                     System.out.println("Comando inválido");
-                    break;
+//                    System.out.println("Tecle 'enter' para continuar"); 
+//                    get.next();
+                    System.out.print("\f");
+                    //break;
             }
     }
-    
-}
-    
-    public void setOpcao(boolean op){
-        this.roda = op;
+        
+        
     }
 }
 
