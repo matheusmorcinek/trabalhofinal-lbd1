@@ -116,7 +116,7 @@ public class masterController {
     
     
     //3. Fazer um novo pedido (inserção de um registro de pedido).
-    public void FazerNovoPedido(){
+    public void FazerNovoPedido(String totalpedidos){
         
                 conexao_DB db = new conexao_DB();
 		
@@ -130,7 +130,7 @@ public class masterController {
                                 +","+Integer.toString(pedido.getCodCliente())+")";
 		*/
                 
-                String sql = "insert into pedidos (CODIGOPEDIDO, DATAPEDIDO, CODIGOPRODUTO, QUANTIDADE, VALORTOTAL, CODIGOCLIENTE) values (7,to_date ('25-11-2016', 'DD-MM-YYYY'),1,3123,3333,2)";
+                String sql = "insert into pedidos (CODIGOCLIENTE, DATAPEDIDO, VALORTOTAL, CODIGOPRODUTO, CODIGOPEDIDO, QUANTIDADE) values (2,to_date ('25-11-2016', 'DD-MM-YYYY'),1000,2,"+totalpedidos+",20)";
                      
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);

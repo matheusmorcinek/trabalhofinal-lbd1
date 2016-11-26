@@ -27,33 +27,15 @@ public class App {
     public static void main(String[] args) throws Exception{
         
          masterController master = new masterController();
-        /* 
-         //1. Listagem de todos os produtos, em ordem alfabética.
-        master.RetornaProdutos();
+       
          
-        System.out.println("RetornaProdutoPorNome ###################################################################### "); 
-        String nome = "Alvejante";
-        master.RetornaProdutoPorNome(nome);
- 
-        System.out.println("RetornaClientePorNome ###################################################################### "); 
-        String nome2 = "CLIENTE 1";
-        master.RetornaClientePorNome(nome2);
-
-        System.out.println("FazerNovoPedido ###################################################################### "); 
-       // Pedido pedido = new Pedido(7, 225, 3500, 3,7);
-     //   master.FazerNovoPedido();
-        master.RetornaPedidosPorProduto("Alvejante");
-        */
+            
+         String totalpedidos = Integer.toString(master.retornaTotalDePedidos()+2);
+         master.FazerNovoPedido(totalpedidos);
+        //System.out.println(totalpedidos);
         
-       // master.RetornaListaDeClientesEnumeroPedidosComTotal();
        
-       
-       master.retornaPrecoDeProdutoComPedido();
-       
-        System.out.println(master.retornaTotalDePedidos());
     }
-         
-         
          
     }
     
