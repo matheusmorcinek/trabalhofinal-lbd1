@@ -52,10 +52,8 @@ public  class Menu {
                     System.out.println("Entre com o código do cliente: ");
                     int cod_cli = get.nextInt();
                     //pegar total clientes
-                    int total_clientes = 0;
-                    if(cod_cli < 0 || cod_cli > total_clientes){
-                        cod_cli = get.nextInt();
-                    }
+                    
+                   
                     System.out.println("Entre a quantidade de produtos: ");
                     int qtde = get.nextInt();
                     if(qtde < 0){
@@ -66,16 +64,15 @@ public  class Menu {
                     if(vTotal < 0){
                         qtde = get.nextInt();
                     }
-                    System.out.println("Entre com o codigo do produto: ");
-                    String cproduto = get.nextLine();
+                 
                     
-                    String totalPedidos = Integer.toString(master.retornaTotalDePedidos());
+                    String totalPedidos = Integer.toString(master.retornaTotalDePedidos()+2);
                     master.FazerNovoPedido(totalPedidos, cod_cat, cod_cli, qtde, vTotal);
                     
                     break;
                 case 5:
                     System.out.println("digite nome do produto");
-                    String nomedoproduto = get.nextLine();
+                    String nomedoproduto = get.next();
                     master.RetornaPedidosPorProduto(nomedoproduto);
                     
                     break;
@@ -87,7 +84,7 @@ public  class Menu {
                     
                     break;
                 case 8:
-                    //comando
+                   master.RelatorioDePedidos();
                     break;
                 case 9:
                    roda = false;
